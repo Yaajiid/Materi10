@@ -1,0 +1,94 @@
+1. CREATE DATABASE centralelektronikservice;
+
+2. users:
+   CREATE TABLE users (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    password VARCHAR(255),
+    alamat VARCHAR(255),
+    no_tlp INTEGER,
+    tgl_lahir VARCHAR(255)
+);
+
+   products:
+   CREATE TABLE products (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    kategori VARCHAR(255),
+    harga BIGINTEGER,
+    quantity INTEGER,
+    foto STRING
+);
+
+   transaksi:
+   CREATE TABLE transaksi(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    code_transaksi VARCHAR(255),
+    total_qty VARCHAR(255),
+    total_harga VARCHAR(255),
+    nama_customer VARCHAR(255),
+    alamat VARCHAR(255)
+);
+
+
+3. users:
+   INSERT INTO centralelektronikservice.users (name, email, password, alamat, no_tlp, tgl_lahir)
+   VALUES ('Ahmad Yazid', 'ahmad@yazid.com', 'yazid123', 'Jl. Sigunggung No. 214', 082182183, '2000-01-01');
+
+   INSERT INTO centralelektronikservice.users (name, email, password, alamat, no_tlp, tgl_lahir)
+   VALUES ('Fikri Hamdani', 'fikri@hamdani.com', 'fikri123', 'Jl. Gunggungsi No. 142', 087654321, '2000-05-15');
+
+
+   products:
+   INSERT INTO products (name, kategori, harga, quantity, foto)
+   VALUES ('Mesin Cuci LG', 'Mesin Cuci', 7000000, 10, 'mesincuci1.jpeg');
+
+   INSERT INTO products (name, kategori, harga, quantity, foto)
+   VALUES ('Mesin Cuci Sharp', 'Mesin Cuci', 12000000, 5, 'mesincuci2.jpeg');
+
+   INSERT INTO products (name, kategori, harga, quantity, foto)
+   VALUES ('Kulkas Sharp', 'Kulkas', 500000, 20, 'kulkas1.jpeg');
+
+   INSERT INTO products (name, kategori, harga, quantity, foto)
+   VALUES ('Kulkas LG', 'Kulkas', 800000, 15, 'kulkas2.jpeg');
+   SELECT * FROM `products` WHERE 1
+
+
+   transaksi:
+   INSERT INTO transaksi (code_transaksi, total_qty, total_harga, nama_customer, alamat)
+   VALUES ('TRX001', '1', '7000000', 'Ahmad Yazid', 'Jl. Sigunggung No. 214');
+
+   INSERT INTO transaksi (code_transaksi, total_qty, total_harga, nama_customer, alamat)
+   VALUES ('TRX002', '1', '120000000', 'Fikri Hamdani', 'Jl. Gunggungsi No. 142');
+
+   INSERT INTO transaksi (code_transaksi, total_qty, total_harga, nama_customer, alamat)
+   VALUES ('TRX003', '1', '500000', 'Ahmad Yazid', 'Jl. Sigunggung No. 214');
+
+   INSERT INTO transaksi (code_transaksi, total_qty, total_harga, nama_customer, alamat)
+   VALUES ('TRX003', '1', '800000', 'Fikri Hamdani', 'Jl. Gunggungsi No. 142');
+
+
+4. a. SELECT id, name, email, password, alamat, no_tlp, tgl_lahir
+      FROM users;
+
+   b. SELECT *
+      FROM items
+      WHERE price > 1000000;
+
+      SELECT *
+      FROM items
+      WHERE name LIKE '%kulkas%'; (noted : bisa mengganti '$kulkas' dengan '$mesincuci' atau '$kipas')
+
+   c. SELECT products.name AS product_name, products.kategori, products.harga, products.quantity, products.foto,
+      transaksi.code_transaksi, transaksi.total_qty, transaksi.total_harga, transaksi.nama_customer, transaksi.alamat
+      FROM products
+      JOIN transaksi ON products.id = transaksi.id;
+
+
+5. UPDATE products
+   SET harga = 5000000
+   WHERE name = 'Kulkas Panasonic';
+
+
+   
